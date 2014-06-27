@@ -1,0 +1,393 @@
+  [1m[36m (6.5ms)[0m  [1mCREATE TABLE "ideas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "picture" varchar(255), "created_at" datetime, "updated_at" datetime, "place" varchar(255)) [0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255)) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140626063407')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140618045309')[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140618070724')
+  [1m[36m (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140626054141')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)[0m
+SQLite3::ConstraintException: column email is not unique: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)[0m
+SQLite3::ConstraintException: column email is not unique: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)[0m
+SQLite3::ConstraintException: column email is not unique: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)[0m
+SQLite3::ConstraintException: column email is not unique: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)[0m
+SQLite3::ConstraintException: column email is not unique: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)[0m
+SQLite3::ConstraintException: column email is not unique: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)[0m
+SQLite3::ConstraintException: column email is not unique: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:17:25', '2014-06-26 07:17:25', 298486374)
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:41:24', '2014-06-26 07:41:24', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:41:24', '2014-06-26 07:41:24', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:41:24', '2014-06-26 07:41:24', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:41:24', '2014-06-26 07:41:24', 298486374)
+SQLite3::ConstraintException: column email is not unique: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:41:24', '2014-06-26 07:41:24', 298486374)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:44:30', '2014-06-26 07:44:30', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:44:30', '2014-06-26 07:44:30', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:44:30', '2014-06-26 07:44:30', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:44:30', '2014-06-26 07:44:30', 298486374)
+SQLite3::ConstraintException: column email is not unique: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:44:30', '2014-06-26 07:44:30', 298486374)
+  [1m[36m (1.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:44:56', '2014-06-26 07:44:56', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:44:56', '2014-06-26 07:44:56', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:44:56', '2014-06-26 07:44:56', 980190962)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:44:56', '2014-06-26 07:44:56', 298486374)
+SQLite3::ConstraintException: column email is not unique: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:44:56', '2014-06-26 07:44:56', 298486374)
+  [1m[36m (1.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:45:06', '2014-06-26 07:45:06', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:45:06', '2014-06-26 07:45:06', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:45:06', '2014-06-26 07:45:06', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:45:06', '2014-06-26 07:45:06', 298486374)
+SQLite3::ConstraintException: column email is not unique: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:45:06', '2014-06-26 07:45:06', 298486374)
+  [1m[36m (0.9ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:46:51', '2014-06-26 07:46:51', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:46:51', '2014-06-26 07:46:51', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:46:51', '2014-06-26 07:46:51', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:46:51', '2014-06-26 07:46:51', 298486374)
+SQLite3::ConstraintException: column email is not unique: INSERT INTO "users" ("created_at", "updated_at", "id") VALUES ('2014-06-26 07:46:51', '2014-06-26 07:46:51', 298486374)
+  [1m[36m (1.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:48:44', '2014-06-26 07:48:44', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:48:44', '2014-06-26 07:48:44', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+---------------------------------------------------------------------
+LoginTest: test_sign_up_with_valid_user_information_and_then_sign_out
+---------------------------------------------------------------------
+  [1m[35m (2.6ms)[0m  DELETE FROM "ideas";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (2.4ms)[0m  DELETE FROM sqlite_sequence where name = 'ideas';
+  [1m[36m (0.7ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:53:53', '2014-06-26 07:53:53', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:53:53', '2014-06-26 07:53:53', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+---------------------------------------------------------------------
+LoginTest: test_sign_up_with_valid_user_information_and_then_sign_out
+---------------------------------------------------------------------
+Started GET "/" for 127.0.0.1 at 2014-06-26 16:53:57 +0900
+Started GET "/ideas" for 127.0.0.1 at 2014-06-26 16:53:57 +0900
+Processing by IdeasController#index as HTML
+Completed 401 Unauthorized in 17ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-26 16:53:57 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (48.4ms)
+Completed 200 OK in 923ms (Views: 910.2ms | ActiveRecord: 0.7ms)
+Started GET "/assets/application.css" for 127.0.0.1 at 2014-06-26 16:53:58 +0900
+Started GET "/assets/application.js" for 127.0.0.1 at 2014-06-26 16:53:58 +0900
+  [1m[35m (0.7ms)[0m  DELETE FROM "ideas";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.8ms)[0m  DELETE FROM sqlite_sequence where name = 'ideas';
+  [1m[36m (0.7ms)[0m  [1mDELETE FROM "users";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'users';[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:56:24', '2014-06-26 07:56:24', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 07:56:24', '2014-06-26 07:56:24', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+---------------------------------------------------------------------
+LoginTest: test_sign_up_with_valid_user_information_and_then_sign_out
+---------------------------------------------------------------------
+Started GET "/" for 127.0.0.1 at 2014-06-26 16:56:27 +0900
+Started GET "/ideas" for 127.0.0.1 at 2014-06-26 16:56:27 +0900
+Processing by IdeasController#index as HTML
+Completed 401 Unauthorized in 25ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-26 16:56:27 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 60ms (Views: 37.4ms | ActiveRecord: 1.2ms)
+Started GET "/assets/application.js" for 127.0.0.1 at 2014-06-26 16:56:27 +0900
+Started GET "/assets/application.css" for 127.0.0.1 at 2014-06-26 16:56:27 +0900
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-26 16:56:29 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users"
+Started POST "/users" for 127.0.0.1 at 2014-06-26 16:56:32 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"ya900001@test.org", "username"=>"YA900001", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."username" = 'YA900001' LIMIT 1
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-06-26 07:56:32.702199"], ["email", "ya900001@test.org"], ["encrypted_password", "$2a$04$p8L1OVzgBZiZ/DwkZtnLf.MdMxUF3dpWcz6Sf2lR1HPVdyJuGMhRO"], ["updated_at", "2014-06-26 07:56:32.702199"], ["username", "YA900001"]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `current_sign_in_ip`
+Binary data inserted for `string` type on column `last_sign_in_ip`
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 1  [["current_sign_in_at", "2014-06-26 07:56:32.707606"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2014-06-26 07:56:32.707606"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2014-06-26 07:56:32.708520"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://127.0.0.1:57918/ideas
+Completed 302 Found in 28ms (ActiveRecord: 3.1ms)
+Started GET "/ideas" for 127.0.0.1 at 2014-06-26 16:56:32 +0900
+Processing by IdeasController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mIdea Load (0.1ms)[0m  [1mSELECT "ideas".* FROM "ideas"[0m
+  Rendered ideas/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 14ms (Views: 8.5ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."username" = 'YA900001' LIMIT 1[0m
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-26 16:56:34 +0900
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://127.0.0.1:57918/
+Completed 302 Found in 9ms (ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2014-06-26 16:56:34 +0900
+Started GET "/ideas" for 127.0.0.1 at 2014-06-26 16:56:34 +0900
+Processing by IdeasController#index as HTML
+Completed 401 Unauthorized in 2ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-26 16:56:34 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (2.9ms)[0m  [1mDELETE FROM "ideas";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.6ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'ideas';[0m
+  [1m[35m (4.0ms)[0m  DELETE FROM "users";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (2.2ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 09:39:17', '2014-06-26 09:39:17', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 09:39:17', '2014-06-26 09:39:17', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+---------------------------------------------------------------------
+LoginTest: test_sign_up_with_valid_user_information_and_then_sign_out
+---------------------------------------------------------------------
+Started GET "/" for 127.0.0.1 at 2014-06-26 18:39:20 +0900
+Started GET "/ideas" for 127.0.0.1 at 2014-06-26 18:39:20 +0900
+Processing by IdeasController#index as HTML
+Completed 401 Unauthorized in 16ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-26 18:39:20 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (2.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (22.5ms)
+Completed 200 OK in 58ms (Views: 41.8ms | ActiveRecord: 0.7ms)
+Started GET "/assets/application.css" for 127.0.0.1 at 2014-06-26 18:39:20 +0900
+Started GET "/assets/application.js" for 127.0.0.1 at 2014-06-26 18:39:20 +0900
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-26 18:39:21 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+Started POST "/users" for 127.0.0.1 at 2014-06-26 18:39:24 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"ya900001@test.org", "username"=>"YA900001", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."username" = 'YA900001' LIMIT 1
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-06-26 09:39:24.550750"], ["email", "ya900001@test.org"], ["encrypted_password", "$2a$04$hFNY1HbfJlV/BAH54GaGsedppPtfOA97v8to8W37wZBaHzXosVJxK"], ["updated_at", "2014-06-26 09:39:24.550750"], ["username", "YA900001"]]
+  [1m[35m (1.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `current_sign_in_ip`
+Binary data inserted for `string` type on column `last_sign_in_ip`
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 1  [["current_sign_in_at", "2014-06-26 09:39:24.554604"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2014-06-26 09:39:24.554604"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2014-06-26 09:39:24.555515"]]
+  [1m[36m (3.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://127.0.0.1:58080/ideas
+Completed 302 Found in 28ms (ActiveRecord: 6.0ms)
+Started GET "/ideas" for 127.0.0.1 at 2014-06-26 18:39:24 +0900
+Processing by IdeasController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mIdea Load (0.1ms)[0m  [1mSELECT "ideas".* FROM "ideas"[0m
+  Rendered ideas/index.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 15ms (Views: 7.2ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."username" = 'YA900001' LIMIT 1[0m
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-26 18:39:25 +0900
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://127.0.0.1:58080/
+Completed 302 Found in 5ms (ActiveRecord: 0.3ms)
+Started GET "/" for 127.0.0.1 at 2014-06-26 18:39:25 +0900
+Started GET "/ideas" for 127.0.0.1 at 2014-06-26 18:39:25 +0900
+Processing by IdeasController#index as HTML
+Completed 401 Unauthorized in 2ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-26 18:39:25 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM "ideas";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.9ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'ideas';[0m
+  [1m[35m (1.1ms)[0m  DELETE FROM "users";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (2.7ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM "ideas"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 09:40:34', '2014-06-26 09:40:34', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-26 09:40:34', '2014-06-26 09:40:34', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+---------------------------------------------------------------------
+LoginTest: test_sign_up_with_valid_user_information_and_then_sign_out
+---------------------------------------------------------------------
+Started GET "/" for 127.0.0.1 at 2014-06-26 18:40:36 +0900
+Started GET "/ideas" for 127.0.0.1 at 2014-06-26 18:40:36 +0900
+Processing by IdeasController#index as HTML
+Completed 401 Unauthorized in 21ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-26 18:40:36 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (31.4ms)
+Completed 200 OK in 62ms (Views: 50.6ms | ActiveRecord: 1.1ms)
+Started GET "/assets/application.css" for 127.0.0.1 at 2014-06-26 18:40:37 +0900
+Started GET "/assets/application.js" for 127.0.0.1 at 2014-06-26 18:40:37 +0900
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-26 18:40:39 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+Started POST "/users" for 127.0.0.1 at 2014-06-26 18:40:42 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"ya900001@test.org", "username"=>"YA900001", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."username" = 'YA900001' LIMIT 1
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-06-26 09:40:42.070846"], ["email", "ya900001@test.org"], ["encrypted_password", "$2a$04$hn4u.aKeUBqjYJaK4lOhD.i0PdYTzybfwKVoa7RcNLJ/0NzlhlhyG"], ["updated_at", "2014-06-26 09:40:42.070846"], ["username", "YA900001"]]
+  [1m[35m (1.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `current_sign_in_ip`
+Binary data inserted for `string` type on column `last_sign_in_ip`
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = 1  [["current_sign_in_at", "2014-06-26 09:40:42.076404"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2014-06-26 09:40:42.076404"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2014-06-26 09:40:42.077784"]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://127.0.0.1:58158/ideas
+Completed 302 Found in 29ms (ActiveRecord: 3.5ms)
+Started GET "/ideas" for 127.0.0.1 at 2014-06-26 18:40:42 +0900
+Processing by IdeasController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mIdea Load (0.1ms)[0m  [1mSELECT "ideas".* FROM "ideas"[0m
+  Rendered ideas/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 12ms (Views: 7.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."username" = 'YA900001' LIMIT 1[0m
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-26 18:40:43 +0900
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to http://127.0.0.1:58158/
+Completed 302 Found in 8ms (ActiveRecord: 0.5ms)
+Started GET "/" for 127.0.0.1 at 2014-06-26 18:40:43 +0900
+Started GET "/ideas" for 127.0.0.1 at 2014-06-26 18:40:43 +0900
+Processing by IdeasController#index as HTML
+Completed 401 Unauthorized in 1ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-26 18:40:43 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.7ms)[0m  [1mDELETE FROM "ideas";[0m
+  [1m[35m (0.1ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.7ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'ideas';[0m
+  [1m[35m (3.0ms)[0m  DELETE FROM "users";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (3.5ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
