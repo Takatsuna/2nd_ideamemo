@@ -65,6 +65,7 @@ class AcceptanceTest < ActionDispatch::IntegrationTest
   end
 
 
+
   def sign_out
     click_link "Logout"
     assert_equal new_user_session_path, current_path

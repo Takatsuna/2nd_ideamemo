@@ -18,20 +18,20 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="/">I-dea-Memo</a>
+    <a class="navbar-brand" href="/">アイデア　メモ</a>
   </div>
   <div class="collapse navbar-collapse">
     <p class="navbar-text pull-right">
 <% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+   <strong><%= current_user.username %></strong>としてログイン中.
+   |
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 <% else %>
-  <%= link_to "Sign☆up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+  <%= link_to "新規ユーザ登録", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "ログイン", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/ideas">one idea</a></li>
+      <li class="active"><a href="/ideas">アイデア登録画面</a></li>
     </ul>
     
   </div>
@@ -56,7 +56,7 @@
   
   <footer>
     <div class="container">
-      Chuden C-T-I Co.,Ltd.
+      株式会社　酎殿推定愛　（Chu-den Suitei Ai Co,.Ltd）
     </div>
   </footer>
   

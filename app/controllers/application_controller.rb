@@ -14,5 +14,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :password, :password_confirmation, :email) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :password, :remember_me) }
   end
+  rescue_from CanCan::AccessDenied do |exception|
+      redirect_to root_url, :alert => exception.message
+  end
   
 end

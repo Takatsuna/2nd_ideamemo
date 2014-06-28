@@ -1,0 +1,4 @@
+ja:
+  unauthorized:
+    manage:
+      all: あなたのユーザでは操作権限がありません。
