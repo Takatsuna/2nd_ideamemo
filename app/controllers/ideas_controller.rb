@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   #cancanで使用
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
 
