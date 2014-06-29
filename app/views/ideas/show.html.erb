@@ -19,6 +19,19 @@
   <strong>Place:</strong>
   <%= @idea.place %>
 </p>
+<hr>
+<h3>寄せられたコメント</h3>
+<% @comments.each do |comment| %>
+  <div>
+    <strong><%= comment.reviewer %></strong>(<%= time_ago_in_words(comment.updated_at)%>前)
+    <br />
+    <p><%= comment.reviewcomment %></p>
+    <p><%= link_to 'コメント削除', comment_path(comment), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></p>
+  </div>
+<% end %>
+ <hr>
+ <h3>コメントを投稿してみる</h3>
+<%= render 'comments/form' %>
 
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
 <%= link_to 'Back', ideas_path %>
