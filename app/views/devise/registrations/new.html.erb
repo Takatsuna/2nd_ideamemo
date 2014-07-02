@@ -16,6 +16,10 @@
   <div><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
+  <div><%= f.label :role %>(input 'admin' or 'user' for test...)<br />
+    <%= f.select :role, [['user'],['admin']] ,prompt:"ユーザの役割（管理者or利用者）※テスト用にここで選択" %></div>
+
+
   <div><%= f.submit "新規ユーザ登録する" %></div>
 <% end %>
 

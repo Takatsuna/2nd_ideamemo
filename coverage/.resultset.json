@@ -27,15 +27,24 @@
         null,
         null,
         1,
-        1,
+        0,
         null,
         null,
         1,
-        2,
+        0,
+        null,
+        null,
+        null,
         null,
         null
       ],
+      "/Users/takatsuna/projects/ideamemo2/app/models/comment.rb": [
+        1,
+        1,
+        null
+      ],
       "/Users/takatsuna/projects/ideamemo2/app/models/idea.rb": [
+        1,
         1,
         1,
         null
@@ -56,7 +65,7 @@
         null,
         null,
         1,
-        2,
+        0,
         null,
         null,
         null,
@@ -95,17 +104,22 @@
       ],
       "/Users/takatsuna/projects/ideamemo2/app/controllers/ideas_controller.rb": [
         1,
-        1,
         null,
         null,
         null,
         1,
-        1,
-        null,
         null,
         null,
         null,
         1,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
         null,
         null,
         null,
@@ -183,8 +197,11 @@
         null,
         1,
         null,
-        6,
-        7,
+        2,
+        3,
+        null,
+        1,
+        0,
         null,
         null,
         null
@@ -193,11 +210,19 @@
         1,
         null
       ],
+      "/Users/takatsuna/projects/ideamemo2/app/helpers/comments_helper.rb": [
+        1,
+        null
+      ],
       "/Users/takatsuna/projects/ideamemo2/app/helpers/ideas_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/takatsuna/projects/ideamemo2/app/helpers/users_helper.rb": [
         1,
         null
       ]
     },
-    "timestamp": 1403775645
+    "timestamp": 1404137512
   }
 }

@@ -391,3 +391,63 @@ Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms)
   [1m[35m (3.0ms)[0m  DELETE FROM "users";
   [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
   [1m[35m (3.5ms)[0m  DELETE FROM sqlite_sequence where name = 'users';
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "reviewer" varchar(255), "reviewcomment" varchar(255), "created_at" datetime, "updated_at" datetime, "idea_id" integer) 
+  [1m[36m (1.5ms)[0m  [1mDROP TABLE "ideas"[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "ideas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "picture" varchar(255), "created_at" datetime, "updated_at" datetime, "place" varchar(255)) 
+  [1m[36m (1.6ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime, "username" varchar(255), "role" varchar(255)) 
+  [1m[36m (0.4ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140629152205')
+  [1m[36m (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140627130923')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140629151935')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "comments"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "comments" ("reviewer", "reviewcomment", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2014-06-30 14:11:20', '2014-06-30 14:11:20', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "comments" ("reviewer", "reviewcomment", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2014-06-30 14:11:20', '2014-06-30 14:11:20', 298486374)[0m
+  [1m[35mFixture Delete (0.0ms)[0m  DELETE FROM "ideas"
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-30 14:11:20', '2014-06-30 14:11:20', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "ideas" ("name", "description", "picture", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', '2014-06-30 14:11:20', '2014-06-30 14:11:20', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+---------------------------------------------------------------------
+LoginTest: test_sign_up_with_valid_user_information_and_then_sign_out
+---------------------------------------------------------------------
+Started GET "/" for 127.0.0.1 at 2014-06-30 23:11:23 +0900
+Started GET "/ideas" for 127.0.0.1 at 2014-06-30 23:11:23 +0900
+Processing by IdeasController#index as HTML
+Completed 401 Unauthorized in 19ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-30 23:11:23 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 265ms (Views: 244.4ms | ActiveRecord: 1.1ms)
+Started GET "/assets/application.css" for 127.0.0.1 at 2014-06-30 23:11:24 +0900
+Started GET "/assets/application.js" for 127.0.0.1 at 2014-06-30 23:11:24 +0900
+Started GET "/users/sign_up" for 127.0.0.1 at 2014-06-30 23:11:26 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM "comments";
+  [1m[36m (0.1ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.7ms)[0m  DELETE FROM sqlite_sequence where name = 'comments';
+  [1m[36m (2.7ms)[0m  [1mDELETE FROM "ideas";[0m
+  [1m[35m (0.2ms)[0m  SELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';
+  [1m[36m (0.8ms)[0m  [1mDELETE FROM sqlite_sequence where name = 'ideas';[0m
+  [1m[35m (0.8ms)[0m  DELETE FROM "users";
+  [1m[36m (0.2ms)[0m  [1mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  DELETE FROM sqlite_sequence where name = 'users';

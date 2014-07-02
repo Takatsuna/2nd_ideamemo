@@ -11,8 +11,9 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     #strong parametersを設定し、usernameを許可
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :password, :password_confirmation, :email) }
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :password, :remember_me) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :password, :password_confirmation, :email, :role) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :password, :remember_me, :role) }
+    
   end
   rescue_from CanCan::AccessDenied do |exception|
       redirect_to root_url, :alert => exception.message

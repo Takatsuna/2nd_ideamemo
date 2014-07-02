@@ -1,8 +1,8 @@
 <h1>アイデアの一覧</h1>
 <% if can? :manage, @users %>
-Your role is 'admin'.
+【管理者として更新操作も可能です】
 <% else %>
-Your role is 'user'.
+【利用者として参照操作のみ可能です】
 <% end %>
 <table>
   <thead>
@@ -25,7 +25,7 @@ Your role is 'user'.
         <td><%= link_to '見る！', idea %></td>
 		<%if can? :manage , User %>
           <td><%= link_to '編集する！', edit_idea_path(idea) %></td>
-          <td><%= link_to '捨てる。。', idea, method: :delete, data: { confirm: '本当に消しますか?' } %></td>
+          <td><%= link_to '捨てる。。', idea, method: :delete, data: { confirm: '本当に消していいですか?' } %></td>
         <%end%>
       </tr>
     <% end %>
