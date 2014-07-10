@@ -20,8 +20,9 @@ class LoginTest < AcceptanceTest
       fill_in "user_email", with: "ya900001@test.org"
       fill_in "user_password", with: "passpass"
       fill_in "user_password_confirmation", with: "passpass"
+      select('admin', :from => 'user_role')
       save_screenshot "scenario-01-03.png"
-      click_button "Sign up"
+      click_button "新規ユーザ登録する"
       save_screenshot "scenario-01-04.png"
       assert_equal '/ideas', current_path
     end
